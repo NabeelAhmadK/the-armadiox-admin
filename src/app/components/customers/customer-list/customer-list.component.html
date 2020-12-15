@@ -1,0 +1,63 @@
+<app-breadcrumb [title]="'Customers'" [items]="['Customer Management']" [active_item]="'Customers'"></app-breadcrumb>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 project-list">
+      <div class="card">
+        <div class="row">
+          <div class="col-sm-6">
+
+          </div>
+          <div class="col-sm-6">
+            <div class="text-right">
+              <div class="form-group mb-0 mr-0"></div><a class="btn btn-primary"
+                [routerLink]="['/customer-management/customer']"> <i data-feather="plus-square"> </i>Create New
+                Customer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="tab-content" id="top-tabContent">
+            <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+              <div class="table-responsive product-list-custom custom-datatable">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr class="Dashed">
+                        <th scope="col">#</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col" class="text-center">Active Orders</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="Dashed">
+                        <th scope="row">1</th>
+                        <td>Nabeel</td>
+                        <td>Ahmad</td>
+                        <td>G-224, FFC Township</td>
+                        <td>Mirpur Mathelo</td>
+                        <td>Sindh</td>
+                        <td>+923058165462</td>
+                        <td>nabeelkhana...</td>
+                        <td class="text-center">1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

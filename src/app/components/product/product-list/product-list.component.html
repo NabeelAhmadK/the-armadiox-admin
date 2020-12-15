@@ -1,0 +1,77 @@
+<app-breadcrumb [title]="'Products'" [items]="['Product Management']" [active_item]="'Products'"></app-breadcrumb>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 project-list">
+      <div class="card">
+        <div class="row">
+          <div class="col-sm-6">
+
+          </div>
+          <div class="col-sm-6">
+            <div class="text-right">
+              <div class="form-group mb-0 mr-0"></div><a class="btn btn-primary"
+                [routerLink]="['/product-management/product']"> <i data-feather="plus-square"> </i>Add New
+                Product</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="tab-content" id="top-tabContent">
+            <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+              <div class="table-responsive product-list-custom custom-datatable">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr class="Dashed">
+                        <th scope="col">#</th>
+                        <th scope="col">Product ID</th>
+                        <th scope="col">Product</th>
+                        <th scope="col" class="text-center">Cost</th>
+                        <th scope="col" class="text-center">Stock</th>
+                        <th scope="col" class="text-center">Orders</th>
+                        <th scope="col">Variations</th>
+                        <th scope="col" class="text-center">Gender</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col" class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="Dashed">
+                        <th scope="row">1</th>
+                        <td>PAX-001</td>
+                        <td>G-Shock-MTG</td>
+                        <td>Rs. 800</td>
+                        <td class="text-center"><span class="text-success">In Stock</span></td>
+                        <td class="text-center">0</td>
+                        <td>Brown/Black</td>
+                        <td class="text-center">M</td>
+                        <td>4 June, 2020</td>
+                        <td class="text-center">1</td>
+                      </tr>
+                      <tr class="Dashed">
+                        <th scope="row">1</th>
+                        <td>PAX-002</td>
+                        <td>G-Shock-GMS</td>
+                        <td>Rs. 900</td>
+                        <td class="text-center"><span class="text-danger">Out of Stock</span></td>
+                        <td class="text-center">0</td>
+                        <td>Pink</td>
+                        <td class="text-center">F</td>
+                        <td>14 May, 2020</td>
+                        <td class="text-center">1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
