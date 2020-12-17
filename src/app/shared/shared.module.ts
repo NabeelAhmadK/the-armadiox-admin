@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { DragulaModule } from 'ng2-dragula';
 import { TranslateModule } from '@ngx-translate/core';
 // Components
@@ -32,6 +33,7 @@ import { ShowOptionsDirective } from './directives/show-options.directive';
 // Services
 import { LayoutService } from './services/layout.service';
 import { NavService } from './services/nav.service';
+import { LookupService } from './services/lookup.service'
 
 @NgModule({
   declarations: [
@@ -62,13 +64,15 @@ import { NavService } from './services/nav.service';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule,
     NgbModule,
     DragulaModule.forRoot(),
     TranslateModule
   ],
   providers: [
     NavService,
-    LayoutService
+    LayoutService,
+    LookupService
   ],
   exports: [
     NgbModule,
@@ -80,6 +84,7 @@ import { NavService } from './services/nav.service';
     FeatherIconsComponent,
     TapToTopComponent,
     DisableKeyPressDirective,
+    NgSelectModule,
     OnlyAlphabetsDirective,
     OnlyNumbersDirective
   ],

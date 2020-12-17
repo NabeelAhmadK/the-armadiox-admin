@@ -1,1 +1,100 @@
-<p>product-crud works!</p>
+<app-breadcrumb [title]="'Add Product'" [items]="['Product Management', 'Product']" [active_item]="'Create New'">
+</app-breadcrumb>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="form theme-form">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Product Name</label>
+                  <input class="form-control" type="text" placeholder="Product Name *">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Product Description</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea4"
+                    placeholder="Enter Product Description.." rows="1"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Category</label>
+                  <ng-select [items]="productCategory" bindLabel="category_name" bindValue="category_id"
+                    placeholder="Select Category">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Product Type</label>
+                  <ng-select [items]="productType" bindLabel="product_type_name" bindValue="product_type_id"
+                    placeholder="Select Product Type">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Product Cost</label>
+                  <input class="form-control" type="text" placeholder="0">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Discount</label>
+                  <input class="form-control" type="text" placeholder="0">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Product Variations</label>
+                  <input class="form-control" type="text" placeholder="Black, Blue etc.">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>In Stock</label>
+                  <input class="form-control" type="text" placeholder="0">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group ">
+                  <label>Upload File</label>
+                  <input class="form-control" type="file">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 project-list">
+      <div class="card">
+        <div class="row">
+          <div class="col-sm-6">
+
+          </div>
+          <div class="col-sm-6">
+            <div class="text-right">
+              <div class="form-group mb-0 mr-0"></div>
+              <a class="btn btn-danger" [routerLink]="['/product-management/products']">Cancel</a>
+              <button class="btn btn-success ml-2" (click)="Submit();">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
