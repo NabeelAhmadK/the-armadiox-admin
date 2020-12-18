@@ -1,0 +1,35 @@
+.validation-message {
+    background: #ea3838 none repeat scroll 0 0;
+    border: 1px solid #c61414;
+    border-radius: 2px;
+    box-shadow: 0 0 10px #aaaaaa;
+    color: #fff;
+    display: flex;
+    margin-top: 7px;
+    padding: 2px 5px;
+    position: absolute;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+    z-index: 9;
+    right: 0px;
+}
+.validation-message:after,
+.validation-message:before {
+    bottom: 100%;
+    right: 10%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.validation-message:after {
+    border-color: rgba(234, 56, 56, 0);
+    border-bottom-color: #ea3838;
+    border-width: 5px;
+}
+.validation-message:before {
+    border-color: rgba(198, 20, 20, 0);
+    border-bottom-color: #c61414;
+    border-width: 6px;
+}
