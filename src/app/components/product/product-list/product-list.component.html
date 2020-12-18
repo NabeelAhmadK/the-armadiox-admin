@@ -34,34 +34,24 @@
                         <th scope="col" class="text-center">Stock</th>
                         <th scope="col" class="text-center">Orders</th>
                         <th scope="col">Variations</th>
-                        <th scope="col" class="text-center">Gender</th>
-                        <th scope="col">Start Date</th>
+                        <th scope="col" class="text-center">Type</th>
+                        <th scope="col">Create Date</th>
                         <th scope="col" class="text-center">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="Dashed">
+                      <tr class="Dashed" *ngFor="let product of products">
                         <th scope="row">1</th>
-                        <td>PAX-001</td>
-                        <td>G-Shock-MTG</td>
-                        <td>Rs. 800</td>
+                        <td>{{product.product_sku_id}}</td>
+                        <td>{{product.product_name}}</td>
+                        <td>Rs. {{product.product_cost}}</td>
                         <td class="text-center"><span class="text-success">In Stock</span></td>
-                        <td class="text-center">0</td>
-                        <td>Brown/Black</td>
-                        <td class="text-center">M</td>
-                        <td>4 June, 2020</td>
-                        <td class="text-center">1</td>
-                      </tr>
-                      <tr class="Dashed">
-                        <th scope="row">1</th>
-                        <td>PAX-002</td>
-                        <td>G-Shock-GMS</td>
-                        <td>Rs. 900</td>
-                        <td class="text-center"><span class="text-danger">Out of Stock</span></td>
-                        <td class="text-center">0</td>
-                        <td>Pink</td>
-                        <td class="text-center">F</td>
-                        <td>14 May, 2020</td>
+                        <td class="text-center">
+                          {{product.product_in_order}}
+                        </td>
+                        <td>{{product.product_vaiation}}</td>
+                        <td class="text-center">{{product.product_type_id}}</td>
+                        <td>{{product.create_date | date:'mediumDate'}}</td>
                         <td class="text-center">1</td>
                       </tr>
                     </tbody>

@@ -35,6 +35,7 @@ import { ShowOptionsDirective } from './directives/show-options.directive';
 import { LayoutService } from './services/layout.service';
 import { NavService } from './services/nav.service';
 import { LookupService } from './services/lookup.service'
+import { APIService } from './services/api.service'
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { LookupService } from './services/lookup.service'
   providers: [
     NavService,
     LayoutService,
-    LookupService
+    LookupService,
+    APIService
   ],
   exports: [
     NgbModule,

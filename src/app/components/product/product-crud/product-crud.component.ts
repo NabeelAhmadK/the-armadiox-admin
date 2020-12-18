@@ -3,6 +3,7 @@ import { LookupService } from '../../../shared/services/lookup.service'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValidationService } from '../../../shared/validation'
 import { Product } from '../../../shared/models';
+import { APIService } from '../../../shared/services/api.service';
 @Component({
   selector: 'app-product-crud',
   templateUrl: './product-crud.component.html',
@@ -16,7 +17,8 @@ export class ProductCrudComponent implements OnInit {
   productType: Array<any> = [];
   constructor(
     private lookupService: LookupService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private apiService: APIService
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +55,7 @@ export class ProductCrudComponent implements OnInit {
       return;
 
     let product = this.productForm.value;
+    
   }
 
 }
