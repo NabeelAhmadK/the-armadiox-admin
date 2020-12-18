@@ -6,19 +6,23 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
-          <div class="form theme-form">
+          <div class="form theme-form" [formGroup]="productForm">
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Product Name</label>
-                  <input class="form-control" type="text" placeholder="Product Name *">
+                  <input class="form-control" type="text" formControlName="product_name" placeholder="Product Name *">
+                  <app-validation-popover [control]="productForm.controls.product_name" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Product Description</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea4"
+                  <textarea class="form-control" id="exampleFormControlTextarea4" formControlName="product_description"
                     placeholder="Enter Product Description.." rows="1"></textarea>
+                  <app-validation-popover [control]="productForm.controls.product_description" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
             </div>
@@ -26,17 +30,21 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Category</label>
-                  <ng-select [items]="productCategory" bindLabel="category_name" bindValue="category_id"
-                    placeholder="Select Category">
+                  <ng-select [items]="productCategory" bindLabel="category_name" formControlName="product_category"
+                    bindValue="category_id" placeholder="Select Category">
                   </ng-select>
+                  <app-validation-popover [control]="productForm.controls.product_category" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Product Type</label>
-                  <ng-select [items]="productType" bindLabel="product_type_name" bindValue="product_type_id"
-                    placeholder="Select Product Type">
+                  <ng-select [items]="productType" bindLabel="product_type_name" formControlName="product_type"
+                    bindValue="product_type_id" placeholder="Select Product Type">
                   </ng-select>
+                  <app-validation-popover [control]="productForm.controls.product_type" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
             </div>
@@ -44,13 +52,17 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Product Cost</label>
-                  <input class="form-control" type="text" placeholder="0">
+                  <input class="form-control" type="text" maxlength="5" placeholder="0" formControlName="unit_cost">
+                  <app-validation-popover [control]="productForm.controls.unit_cost" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label>Discount</label>
-                  <input class="form-control" type="text" placeholder="0">
+                  <label>Discount (%)</label>
+                  <input class="form-control" maxlength="3" type="text" placeholder="0" formControlName="discount">
+                  <app-validation-popover [control]="productForm.controls.discount" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
             </div>
@@ -58,13 +70,18 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Product Variations</label>
-                  <input class="form-control" type="text" placeholder="Black, Blue etc.">
+                  <input class="form-control" type="text" placeholder="Black, Blue etc."
+                    formControlName="product_variation">
+                  <app-validation-popover [control]="productForm.controls.product_variation" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>In Stock</label>
-                  <input class="form-control" type="text" placeholder="0">
+                  <input class="form-control" type="text" maxlength="3" placeholder="0" formControlName="units_in_stock">
+                  <app-validation-popover [control]="productForm.controls.units_in_stock" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
             </div>

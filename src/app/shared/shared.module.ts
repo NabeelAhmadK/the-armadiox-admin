@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DragulaModule } from 'ng2-dragula';
+import { ValidationModule } from "./validation";
 import { TranslateModule } from '@ngx-translate/core';
 // Components
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
@@ -64,6 +65,7 @@ import { LookupService } from './services/lookup.service'
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    ValidationModule,
     NgSelectModule,
     NgbModule,
     DragulaModule.forRoot(),
@@ -77,6 +79,7 @@ import { LookupService } from './services/lookup.service'
   exports: [
     NgbModule,
     FormsModule,
+    ValidationModule,
     ReactiveFormsModule,
     TranslateModule,
     LoaderComponent,
