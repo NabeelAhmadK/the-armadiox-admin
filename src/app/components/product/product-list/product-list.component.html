@@ -4,14 +4,14 @@
     <div class="col-md-12 project-list">
       <div class="card">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-8">
 
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <div class="text-right">
-              <div class="form-group mb-0 mr-0"></div><a class="btn btn-primary"
-                [routerLink]="['/product-management/product']"> <i data-feather="plus-square"> </i>Add New
-                Product</a>
+              <a class="btn btn-primary" [routerLink]="['/product-management/product']"> <i data-feather="plus-square">
+                </i>Add Product</a>
+              <button class="btn btn-light" (click)="GetProducts();"><i class="fa fa-refresh"></i></button>
             </div>
           </div>
         </div>
@@ -20,6 +20,7 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
+          <app-product-advance-search></app-product-advance-search>
           <div class="tab-content" id="top-tabContent">
             <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
               <div class="table-responsive product-list-custom custom-datatable">
@@ -27,7 +28,6 @@
                   <table class="table">
                     <thead>
                       <tr class="Dashed">
-                        <th scope="col">#</th>
                         <th scope="col">Product ID</th>
                         <th scope="col">Product</th>
                         <th scope="col" class="text-center">Cost</th>
@@ -41,18 +41,28 @@
                     </thead>
                     <tbody>
                       <tr class="Dashed" *ngFor="let product of products">
-                        <th scope="row">1</th>
                         <td>{{product.product_sku_id}}</td>
                         <td>{{product.product_name}}</td>
-                        <td>Rs. {{product.product_cost}}</td>
-                        <td class="text-center"><span class="text-success">In Stock</span></td>
+                        <td class="text-center">Rs. {{product.product_cost}}</td>
+                        <td class="text-center">
+                          <span [ngbTooltip]="product.product_in_stock"
+                            [ngClass]="{'text-danger': product.product_in_stock == 0, 'text-primary': product.product_in_stock <= 5, 'text-success': product.product_in_stock > 5}">{{product.product_in_stock == 0 ? 'Out of Stock' : product.product_in_stock > 5 ? 'In Stock' : 'Low Stock'}}</span>
+                        </td>
                         <td class="text-center">
                           {{product.product_in_order}}
                         </td>
-                        <td>{{product.product_vaiation}}</td>
-                        <td class="text-center">{{product.product_type_id}}</td>
+                        <td><span [ngStyle]="{color: product.product_variation}">{{product.product_variation}}</span>
+                        </td>
+                        <td class="text-center">
+                          {{product.product_type_id == 1 ? 'Male' : product.product_type_id == 2 ? 'Female' : product.product_type_id == 3 ? 'Uni-Sex' : '-'}}
+                        </td>
                         <td>{{product.create_date | date:'mediumDate'}}</td>
-                        <td class="text-center">1</td>
+                        <td class="text-center">
+                          <a class="btn btn-dark btn-xs"
+                            [routerLink]="['/product-management/product', product.product_id]"><i
+                              class="fa fa-pencil"></i></a>
+                          <button class="btn btn-danger btn-xs ml-1"><i class="fa fa-trash"></i></button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>

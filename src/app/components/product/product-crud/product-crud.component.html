@@ -1,4 +1,5 @@
-<app-breadcrumb [title]="'Add Product'" [items]="['Product Management', 'Product']" [active_item]="'Create New'">
+<app-breadcrumb [title]="'Add Product'" [url]="'/product-management/products'"
+  [items]="['Product Management', 'Product']" [active_item]="'Create New'">
 </app-breadcrumb>
 <!-- Container-fluid starts-->
 <div class="container-fluid">
@@ -30,20 +31,20 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Category</label>
-                  <ng-select [items]="productCategory" bindLabel="category_name" formControlName="product_category"
+                  <ng-select [items]="productCategory" bindLabel="category_name" formControlName="product_category_id"
                     bindValue="category_id" placeholder="Select Category">
                   </ng-select>
-                  <app-validation-popover [control]="productForm.controls.product_category" [show]="submitted">
+                  <app-validation-popover [control]="productForm.controls.product_category_id" [show]="submitted">
                   </app-validation-popover>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Product Type</label>
-                  <ng-select [items]="productType" bindLabel="product_type_name" formControlName="product_type"
+                  <ng-select [items]="productType" bindLabel="product_type_name" formControlName="product_type_id"
                     bindValue="product_type_id" placeholder="Select Product Type">
                   </ng-select>
-                  <app-validation-popover [control]="productForm.controls.product_type" [show]="submitted">
+                  <app-validation-popover [control]="productForm.controls.product_type_id" [show]="submitted">
                   </app-validation-popover>
                 </div>
               </div>
@@ -52,8 +53,8 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Product Cost</label>
-                  <input class="form-control" type="text" maxlength="5" placeholder="0" formControlName="unit_cost">
-                  <app-validation-popover [control]="productForm.controls.unit_cost" [show]="submitted">
+                  <input class="form-control" type="text" maxlength="5" placeholder="0" formControlName="product_cost">
+                  <app-validation-popover [control]="productForm.controls.product_cost" [show]="submitted">
                   </app-validation-popover>
                 </div>
               </div>
@@ -79,8 +80,9 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>In Stock</label>
-                  <input class="form-control" type="text" maxlength="3" placeholder="0" formControlName="units_in_stock">
-                  <app-validation-popover [control]="productForm.controls.units_in_stock" [show]="submitted">
+                  <input class="form-control" type="text" maxlength="3" placeholder="0"
+                    formControlName="product_in_stock">
+                  <app-validation-popover [control]="productForm.controls.product_in_stock" [show]="submitted">
                   </app-validation-popover>
                 </div>
               </div>

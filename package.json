@@ -67,6 +67,7 @@
     "hammerjs": "^2.0.8",
     "jkanban": "^1.2.3",
     "knob": "^1.1.0",
+    "jquery": "^3.4.1",
     "leaflet": "^1.6.0",
     "mousetrap": "^1.6.5",
     "ng-animate": "^0.3.4",

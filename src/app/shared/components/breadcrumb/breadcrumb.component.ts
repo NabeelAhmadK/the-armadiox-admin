@@ -10,10 +10,11 @@ export class BreadcrumbComponent implements OnInit {
   @Input() title: string;
   @Input() items: any[];
   @Input() active_item: string;
+  @Input() url: string;
 
   constructor() {
   }
 
-  ngOnInit() {  }
+  ngOnInit() { }
 
 }

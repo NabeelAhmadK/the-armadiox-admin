@@ -1,13 +1,15 @@
+import { NumberConverter, StringConverter } from '../utils/conversion';
+
 export class Product {
 
     product_id: number
     product_name: string
     product_description: string
-    units_in_stock: number
-    units_on_order: number
-    unit_cost: number
-    product_category: number
-    product_type: number
+    product_in_stock: number
+    product_in_order: number
+    product_cost: number
+    product_category_id: number
+    product_type_id: number
     product_variation: string
     discount: number
 
@@ -15,13 +17,29 @@ export class Product {
         this.product_id = null
         this.product_name = null
         this.product_description = null
-        this.units_in_stock = null
-        this.units_on_order = null
-        this.unit_cost = null
-        this.product_category = null
-        this.product_type = null
+        this.product_in_stock = null
+        this.product_in_order = null
+        this.product_cost = null
+        this.product_category_id = null
+        this.product_type_id = null
         this.product_variation = null
         this.discount = null
+    }
+
+    deserialize(model?: any) {
+        this.product_id = NumberConverter(model.product_id || null);
+        this.product_name = StringConverter(model.product_name || null);
+        this.product_description = StringConverter(model.product_description || null);
+        this.product_in_stock = NumberConverter(model.product_in_stock || null);
+        this.product_in_order = NumberConverter(model.product_in_order || 0);
+        this.product_cost = NumberConverter(model.product_cost || null);
+        this.product_category_id = NumberConverter(model.product_category_id || null);
+        this.product_type_id = NumberConverter(model.product_type_id || null);
+        this.product_variation = StringConverter(model.product_variation || null);
+        this.discount = NumberConverter(model.discount || 0);
+
+        return this;
+
     }
 
 }

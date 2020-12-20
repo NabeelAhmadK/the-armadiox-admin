@@ -36,6 +36,22 @@ export class APIService {
             )
     }
 
+    GetProductbyId(productId: any): Observable<any> {
+        return this.http.get<any>(`${this.apiURL}product/${productId}`)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            )
+    }
+
+    SaveProduct(payload: any): Observable<any> {
+        return this.http.post<any>(`${this.apiURL}product`, payload)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            )
+    }
+
 
     // Error handling 
     handleError(error) {
