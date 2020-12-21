@@ -19,4 +19,19 @@ export class LookupService {
     getProductType(params?: any): any {
         return this.http.get(`${this.lookupEndpoint}/productType.json`);
     }
+
+    getCities(): any {
+        return this.http.get(`${this.lookupEndpoint}/cities.json`);
+    }
+
+    getStates(): Observable<any> {
+        return this.http.get(`${this.lookupEndpoint}/states.json`)
+    }
+
+    getCountries(): Observable<any> {
+        return this.http.get(`${this.lookupEndpoint}/countries.json`)
+    }
+    getSocialMedia(): Observable<any> {
+        return this.http.get(`${this.lookupEndpoint}/socialMedia.json`)
+    }
 }

@@ -52,6 +52,31 @@ export class APIService {
             )
     }
 
+    SaveCustomer(payload: any): Observable<any> {
+        return this.http.post<any>(`${this.apiURL}customer`, payload)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            )
+    }
+
+    GetCustomer(): Observable<any> {
+        return this.http.get<any>(this.apiURL + 'customer')
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            )
+    }
+
+    GetCustomerbyId(customerId: any): Observable<any> {
+        return this.http.get<any>(`${this.apiURL}customer/${customerId}`)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            )
+    }
+
+
 
     // Error handling 
     handleError(error) {

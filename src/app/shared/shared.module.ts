@@ -31,6 +31,7 @@ import { DisableKeyPressDirective } from './directives/disable-key-press.directi
 import { OnlyAlphabetsDirective } from './directives/only-alphabets.directive';
 import { OnlyNumbersDirective } from './directives/only-numbers.directive';
 import { ShowOptionsDirective } from './directives/show-options.directive';
+import { TextTrimDirective } from './directives/text-trim.directive'
 // Services
 import { LayoutService } from './services/layout.service';
 import { NavService } from './services/nav.service';
@@ -48,6 +49,7 @@ import { APIService } from './services/api.service'
     FullComponent,
     ShowOptionsDirective,
     DisableKeyPressDirective,
+    TextTrimDirective,
     OnlyAlphabetsDirective,
     OnlyNumbersDirective,
     LoaderComponent,
@@ -89,6 +91,7 @@ import { APIService } from './services/api.service'
     FeatherIconsComponent,
     TapToTopComponent,
     DisableKeyPressDirective,
+    TextTrimDirective,
     NgSelectModule,
     OnlyAlphabetsDirective,
     OnlyNumbersDirective

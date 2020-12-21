@@ -11,13 +11,17 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>First Name</label>
-                  <input class="form-control" formControlName="first_name" type="text" placeholder="First Name *">
+                  <input class="form-control" formControlName="first_name" type="text" placeholder="Enter First Name">
+                  <app-validation-popover [control]="customerForm.controls.first_name" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Last Name</label>
-                  <input class="form-control" type="text" formControlName="last_name" placeholder="Last Name">
+                  <input class="form-control" type="text" formControlName="last_name" placeholder="Enter Last Name">
+                  <app-validation-popover [control]="customerForm.controls.last_name" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
             </div>
@@ -25,13 +29,38 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Phone Number</label>
-                  <input class="form-control" type="text" formControlName="phone_number" placeholder="Phone Number *">
+                  <input class="form-control" type="text" formControlName="phone_number" placeholder="+92300xxxxxxx">
+                  <app-validation-popover [control]="customerForm.controls.phone_number" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Email</label>
-                  <input class="form-control" type="text" formControlName="email" placeholder="Email *">
+                  <input class="form-control" type="text" formControlName="email" placeholder="user@email.com">
+                  <app-validation-popover [control]="customerForm.controls.email" [show]="submitted">
+                  </app-validation-popover>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Social Media</label>
+                  <ng-select [items]="socialMedia" bindLabel="socal_media" bindValue="socal_media_key"
+                    formControlName="social_media" placeholder="Select Social Media">
+                  </ng-select>
+                  <app-validation-popover [control]="customerForm.controls.social_media" [show]="submitted">
+                  </app-validation-popover>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Social Media User Name</label>
+                  <input class="form-control" type="text" formControlName="social_user_name"
+                    placeholder="Enter Social Media User Name">
+                  <app-validation-popover [control]="customerForm.controls.social_user_name" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
             </div>
@@ -41,37 +70,40 @@
                   <label>Address</label>
                   <textarea class="form-control" id="exampleFormControlTextarea4" placeholder="Enter Address.."
                     formControlName="address" rows="2"></textarea>
+                  <app-validation-popover [control]="customerForm.controls.address" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label>City</label>
-                  <select class="form-control digits" formControlName="city">
-                    <option>Mirpur Mathelo</option>
-                    <option>Karachi</option>
-                    <option>Lahore</option>
-                  </select>
+                  <label>Select City</label>
+                  <ng-select [items]="cities" (change)="onChangeCity($event);" bindLabel="city" bindValue="city" placeholder="Select City"
+                    formControlName="city">
+                  </ng-select>
+                  <app-validation-popover [control]="customerForm.controls.city" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label>State</label>
-                  <select class="form-control digits" formControlName="state">
-                    <option>Sindh</option>
-                    <option>Punjab</option>
-                    <option>KPK</option>
-                    <option>Balochistan</option>
-                  </select>
+                  <label>Select State</label>
+                  <ng-select [items]="states" bindLabel="state_name" bindValue="state_name" placeholder="Select State"
+                    formControlName="state">
+                  </ng-select>
+                  <app-validation-popover [control]="customerForm.controls.state" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label>Country</label>
-                  <select class="form-control digits" formControlName="country">
-                    <option>Pakistan</option>
-                  </select>
+                  <label>Select Country</label>
+                  <ng-select [items]="countries" bindLabel="country_name" bindValue="country_name"
+                    formControlName="country" placeholder="Select Country">
+                  </ng-select>
+                  <app-validation-popover [control]="customerForm.controls.country" [show]="submitted">
+                  </app-validation-popover>
                 </div>
               </div>
             </div>
