@@ -10,7 +10,7 @@ import { retry, catchError } from 'rxjs/operators';
 export class APIService {
 
 
-    apiURL = 'http://127.0.0.1:3000/api/armadiox/';
+    apiURL = 'https://armadiox-api.herokuapp.com/api/armadiox/';
     private userEndpoint = 'user';
     constructor(private http: HttpClient, private toast: ToastrService) { }
 
