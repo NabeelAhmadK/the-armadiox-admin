@@ -3,7 +3,7 @@ import { NumberConverter, StringConverter } from '../utils/conversion';
 export class Customer {
 
     customer_id: number
-    first_name: string
+    name: string
     last_name: string
     social_media: string
     social_user_name: string
@@ -17,7 +17,7 @@ export class Customer {
 
     constructor() {
         this.customer_id = null;
-        this.first_name = null;
+        this.name = null;
         this.last_name = null;
         this.social_media = null;
         this.social_user_name = null;
@@ -32,7 +32,7 @@ export class Customer {
 
     deserialize(model?: any) {
         this.customer_id = NumberConverter(model.customer_id || null);
-        this.first_name = StringConverter(model.first_name || null);
+        this.name = StringConverter(model.name || null);
         this.last_name = StringConverter(model.last_name || null);
         this.social_media = StringConverter(model.social_media || null);
         this.social_user_name = StringConverter(model.social_user_name || null);

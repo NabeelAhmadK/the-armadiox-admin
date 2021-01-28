@@ -9,18 +9,18 @@ export class CustomerListComponent implements OnInit {
 
   instaLink: any = 'https://www.instagram.com/'
   facebookLink: any = 'https://www.facebook.com/'
-  customers: Array<any> = []
+  customers: Array<any> = [];
+
   constructor(private apiService: APIService) { }
 
   ngOnInit(): void {
     this.GetCustomer()
   }
 
-
   GetCustomer() {
     this.apiService.GetCustomer()
-      .subscribe(res => {
-        this.customers = res.listings;
+      .subscribe(({ results }) => {
+        this.customers = results;
       }, err => {
 
       })

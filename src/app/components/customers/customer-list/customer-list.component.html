@@ -10,7 +10,7 @@
           <div class="col-sm-6">
             <div class="text-right">
               <div class="form-group mb-0 mr-0"></div><a class="btn btn-primary"
-                [routerLink]="['/customer-management/customer']"> <i data-feather="plus-square"> </i>Create New
+                [routerLink]="['/pages/customer-management/customer']"> <i data-feather="plus-square"> </i>Create New
                 Customer</a>
             </div>
           </div>
@@ -28,7 +28,6 @@
                   <table class="table">
                     <thead>
                       <tr class="Dashed">
-                        <th scope="col" class="text-center">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">User Name</th>
                         <th scope="col">Address</th>
@@ -41,21 +40,24 @@
                     </thead>
                     <tbody>
                       <tr class="Dashed" *ngFor="let customer of customers">
-                        <td class="text-center">{{customer.customer_sys_id}}</td>
-                        <td>{{customer.first_name}}</td>
+                        <td>{{customer?.name}}</td>
                         <td><i class="fa"
                             [ngClass]="{'fa-instagram': customer.social_media == 'insta', 'fa-facebook-square': customer.social_media=='fb'}"></i>
                           <a target="_blank"
-                            [href]="customer.social_media == 'insta' ? instaLink + customer.social_user_name : facebookLink + customer.social_user_name ">
-                            <span appTextTrim characters="12" [ngbTooltip]="customer.social_user_name">
-                              &nbsp;{{customer.social_user_name}}
+                            [href]="customer.social_media == 'insta' ? instaLink + customer.social_media_user_name : facebookLink + customer.social_media_user_name ">
+                            <span appTextTrim characters="12" [ngbTooltip]="customer.social_media_user_name">
+                              &nbsp;{{customer.social_media_user_name}}
                             </span>
                           </a>
                         </td>
-                        <td><span appTextTrim characters="15"
-                            [ngbTooltip]="customer.address">{{customer.address}}</span></td>
-                        <td>{{customer.city}}</td>
-                        <td>{{customer.state}}</td>
+                        <td>
+                          <span appTextTrim characters="15" [ngbTooltip]="customer.address">
+                            {{customer?.contact_info?.address?.house_number}}
+                            {{customer?.contact_info?.address?.street}}
+                          </span>
+                        </td>
+                        <td>{{customer?.contact_info?.address?.city}}</td>
+                        <td>{{customer?.contact_info?.address?.province}}</td>
                         <td class="text-center">
                           <button class="btn btn-xs btn-link"><i class="fa fa-eye"></i></button>
                         </td>
@@ -64,7 +66,7 @@
                         </td>
                         <td class="text-center">
                           <a class="btn btn-dark btn-xs"
-                            [routerLink]="['/customer-management/customer', customer.customer_id]"><i
+                            [routerLink]="['/pages/customer-management/customer', customer.id]"><i
                               class="fa fa-pencil"></i></a>
                           <button class="btn btn-danger btn-xs ml-1"><i class="fa fa-trash"></i></button>
                         </td>

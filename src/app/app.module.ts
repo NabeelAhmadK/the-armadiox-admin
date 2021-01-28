@@ -18,8 +18,8 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-
-
+import { CoreModule } from './core'
+import { TranslationLoaderService } from './shared/services/translation-loader.service'
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
@@ -33,6 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    CoreModule,
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
@@ -41,7 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: (http: HttpClient) => new TranslationLoaderService(http),
         deps: [HttpClient]
       },
     }),

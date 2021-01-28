@@ -83,101 +83,44 @@ export class NavService implements OnDestroy {
 			headTitle1: 'General', headTitle2: 'Dashboard',
 		},
 		{
-			path: '/dashboard', title: ' Dashboard', icon: 'home', type: 'link', bookmark: true
+			path: '/pages/dashboard', title: ' Dashboard', icon: 'home', type: 'link', bookmark: true
 		},
 		{
 			headTitle1: 'Applications', headTitle2: 'Ready To Use Apps.',
 		},
 		{
 			title: 'Customers', icon: 'users', type: 'sub', active: false, children: [
-				{ path: '/customer-management/customers', title: 'Customers', type: 'link' },
-				{ path: '/customer-management/customer', title: 'Add Customer', type: 'link' }
+				{ path: '/pages/customer-management/customers', title: 'Customers', type: 'link' },
+				{ path: '/pages/customer-management/customer', title: 'Add Customer', type: 'link' }
 			]
 		},
 		{
 			title: 'Product', icon: 'package', type: 'sub', active: false, children: [
-				{ path: '/product-management/products', title: 'Products', type: 'link' },
-				{ path: '/product-management/product', title: 'Add Product', type: 'link' }
+				{ path: '/pages/product-management/products', title: 'Products', type: 'link' },
+				{ path: '/pages/product-management/product', title: 'Add Product', type: 'link' }
 			]
 		},
 		{
 			title: 'Manage Order', icon: 'shopping-bag', type: 'sub', active: false, children: [
-				{ path: '/order-management/order', title: 'Create Order', type: 'link' },
-				{ path: '/order-management/orders', title: 'View Orders', type: 'link' }
+				{ path: '/pages/order-management/order', title: 'Create Order', type: 'link' },
+				{ path: '/pages/order-management/orders', title: 'View Orders', type: 'link' }
 			]
 		},
 		{
 			title: 'Reports', icon: 'trending-up', type: 'sub', active: false, children: [
-				{ path: '/user/team-details', title: 'Daily Report', type: 'link' },
-				{ path: '/user/profile', title: 'Inventory Reports', type: 'link' },
-				{ path: '/user/profile', title: 'Summary Report', type: 'link' }
+				{ path: '/pages/user/team-details', title: 'Daily Report', type: 'link' },
+				{ path: '/pages/user/profile', title: 'Inventory Reports', type: 'link' },
+				{ path: '/pages/user/profile', title: 'Summary Report', type: 'link' }
 			]
 		},
 	];
 
 	MEGAMENUITEMS: Menu[] = [
-		{
-			title: 'Error Pages', type: 'sub', active: true, children: [
-				{ path: 'javascript:void(0);', title: 'Error Page 400', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Error Page 401', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Error Page 403', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Error Page 404', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Error Page 500', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Error Page 503', type: 'extLink' },
-			]
-		},
-		{
-			title: 'Authentication', type: 'sub', active: false, children: [
-				{ path: 'javascript:void(0);', title: 'Login Simple', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Login BG Image', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Login BG Video', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Simple Register', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Register BG Image', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Register BG Video', type: 'extLink' }
-			]
-		},
-		{
-			title: 'Usefull Pages', type: 'sub', active: false, children: [
-				{ path: 'javascript:void(0);', title: 'Search Pages', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Unlock User', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Forgot Password', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Reset Password', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Maintenance', type: 'extLink' }
-			]
-		},
-		{
-			title: 'Email templates', type: 'sub', active: false, children: [
-				{ path: 'http://admin.pixelstrap.com/cuba/theme/basic-template.html', title: 'Basic Email', type: 'extTabLink' },
-				{ path: 'http://admin.pixelstrap.com/cuba/theme/email-header.html', title: 'Basic With Header', type: 'extTabLink' },
-				{ path: 'http://admin.pixelstrap.com/cuba/theme/template-email.html', title: 'Ecomerce Template', type: 'extTabLink' },
-				{ path: 'http://admin.pixelstrap.com/cuba/theme/template-email-2.html', title: 'Email Template 2', type: 'extTabLink' },
-				{ path: 'http://admin.pixelstrap.com/cuba/theme/ecommerce-templates.html', title: 'Ecommerce Email', type: 'extTabLink' },
-				{ path: 'http://admin.pixelstrap.com/cuba/theme/email-order-success.html', title: 'Order Success', type: 'extTabLink' }
-			]
-		},
-		{
-			title: 'Coming Soon', type: 'sub', active: false, children: [
-				{ path: 'javascript:void(0);', title: 'Coming Simple', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Coming BG Image', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Coming BG Video', type: 'extLink' }
-			]
-		},
+
 	];
 
 	LEVELMENUITEMS: Menu[] = [
-		{
-			path: 'javascript:void(0);', title: 'File Manager', icon: 'git-pull-request', type: 'extLink'
-		},
-		{
-			title: 'Users', icon: 'users', type: 'sub', active: false, children: [
-				{ path: 'javascript:void(0);', title: 'All Users', icon: 'users', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'User Profile', icon: 'users', type: 'extLink' },
-				{ path: 'javascript:void(0);', title: 'Edit Profile', icon: 'users', type: 'extLink' },
-			]
-		},
-		{ path: 'javascript:void(0);', title: 'Bookmarks', icon: 'heart', type: 'extLink' },
-		{ path: 'javascript:void(0);', title: 'Calender', icon: 'calendar', type: 'extLink' },
-		{ path: 'javascript:void(0);', title: 'Social App', icon: 'zap', type: 'extLink' }
+		
 	];
 
 	// Array

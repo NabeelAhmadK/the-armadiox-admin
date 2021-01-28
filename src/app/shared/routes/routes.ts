@@ -19,3 +19,10 @@ export const content: Routes = [
     loadChildren: () => import('../../components/order/order.module').then(m => m.OrderModule)
   }
 ];
+
+export const auth: Routes = [
+  {
+    path: 'login',
+    loadChildren: () => import('../../auth/auth.module').then(m => m.AuthModule)
+  },
+];

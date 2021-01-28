@@ -3,7 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { retry, catchError } from 'rxjs/operators';
-
+import { environment } from '../../../environments/environment'
 @Injectable({
     providedIn: 'root'
 })
@@ -12,9 +12,9 @@ export class APIService {
 
     apiURL = 'https://armadiox-api.herokuapp.com/api/armadiox/';
     private userEndpoint = 'user';
-    constructor(private http: HttpClient, private toast: ToastrService) { }
+    constructor(private http: HttpClient, private toast: ToastrService) {
 
-
+    }
     /*========================================
       CRUD Methods for consuming RESTFul API
     =========================================*/
@@ -53,43 +53,38 @@ export class APIService {
     }
 
     SaveCustomer(payload: any): Observable<any> {
-        return this.http.post<any>(`${this.apiURL}customer`, payload)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            )
+        return this.http.post<any>(`users`, payload);
     }
 
     GetCustomer(): Observable<any> {
-        return this.http.get<any>(this.apiURL + 'customer')
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            )
+        return this.http.get('users');
     }
 
     GetCustomerbyId(customerId: any): Observable<any> {
-        return this.http.get<any>(`${this.apiURL}customer/${customerId}`)
-            .pipe(
-                retry(1),
+        return this.http.get<any>(`users/${customerId}`)
+
+    }
+
+    LogIn(credentials: any): Observable<any> {
+        return this.http.post<any>(`${this.apiURL}auth/login`, credentials)
+            .pipe(retry(1),
                 catchError(this.handleError)
             )
     }
 
-
-
     // Error handling 
     handleError(error) {
-        let errorMessage = '';
-        if (error.error instanceof ErrorEvent) {
-            // Get client-side error
-            errorMessage = error.error.errmsg;
-        } else {
-            // Get server-side error
-            console.log(error);
-            errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.errors.message}`;
-        }
-        this.toast.error('hello');
-        return throwError(errorMessage);
+        // let errorMessage = '';
+        // if (error.error instanceof ErrorEvent) {
+        //     // Get client-side error
+        //     errorMessage = error.error.errmsg;
+        // } else {
+        //     // Get server-side error
+        //     console.log(error);
+        //     errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.errors.message}`;
+        // }
+        // this.toast.error('hello');
+        // return throwError(errorMessage);
+        return 'Error'
     }
 }

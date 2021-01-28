@@ -46,20 +46,25 @@ export class CustomerCrudComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.customerForm = this.formBuilder.group({
-      customer_id: [null],
-      first_name: [null, [Validators.required, ValidationService.emptySpacesValidator]],
-      last_name: [null],
-      social_media: [null, [Validators.required]],
-      social_user_name: [null, [Validators.required, ValidationService.emptySpacesValidator]],
-      address: [null, [Validators.required, ValidationService.emptySpacesValidator]],
-      city: [null, [Validators.required]],
-      state: [null, [Validators.required]],
-      country: ['Pakistan', [Validators.required]],
-      postal_code: [null],
-      phone_number: [null, [Validators.required, ValidationService.emptySpacesValidator, ValidationService.phoneValidator]],
-      email: [null, [Validators.required, ValidationService.emptySpacesValidator, ValidationService.emailValidator]],
-    })
+      name: [null, Validators.required],
+      last_name: [{value: null, disabled: true}],
+      email: [null, [Validators.required, ValidationService.emailValidator]],
+      role: ['user', Validators.required],
+      social_media: [null, Validators.required],
+      social_media_user_name: [null, Validators.required],
+      contact_info: this.formBuilder.group({
+        phone_number: [null, [Validators.required, ValidationService.phoneValidator]],
+        address: this.formBuilder.group({
+          street: [null],
+          city: [null],
+          province: [null],
+          country: [null],
+        })
+      }),
+
+    });
 
     this.PopulateDropdowns();
   }
@@ -100,8 +105,8 @@ export class CustomerCrudComponent implements OnInit {
   }
 
   onChangeCity(city: any) {
-    if (city) this.customerForm.get('state').setValue(city.admin_name)
-    else this.customerForm.get('state').setValue(null)
+    if (city) this.customerForm.get('province').setValue(city.admin_name)
+    else this.customerForm.get('province').setValue(null)
   }
 
   GetCustomerbyId(customerId: any) {
