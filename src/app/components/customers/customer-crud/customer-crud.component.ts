@@ -48,8 +48,9 @@ export class CustomerCrudComponent implements OnInit {
   ngOnInit(): void {
 
     this.customerForm = this.formBuilder.group({
+      id: [null],
       name: [null, Validators.required],
-      last_name: [{value: null, disabled: true}],
+      last_name: [{ value: null, disabled: true }],
       email: [null, [Validators.required, ValidationService.emailValidator]],
       role: ['user', Validators.required],
       social_media: [null, Validators.required],
@@ -96,10 +97,11 @@ export class CustomerCrudComponent implements OnInit {
       return;
 
     let customer = new Customer().deserialize(this.customerForm.value);
+
     this.apiService[this.method](customer)
       .subscribe(res => {
         this.toast.success(`Customer Successfully ${this.customer_id ? 'Updated' : 'Created'}`)
-        this.router.navigate(['/customer-management/customers'], { replaceUrl: true });
+        this.router.navigate(['/pages/customer-management/customers'], { replaceUrl: true });
       })
 
   }

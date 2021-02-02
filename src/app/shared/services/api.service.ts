@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment'
@@ -29,62 +29,57 @@ export class APIService {
 
     // HttpClient API get() method => Fetch Product list
     GetProducts(): Observable<any> {
-        return this.http.get<any>(this.apiURL + 'product')
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            )
+        return this.http.get<any>(this.apiURL + 'product');
     }
 
     GetProductbyId(productId: any): Observable<any> {
-        return this.http.get<any>(`${this.apiURL}product/${productId}`)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            )
+        return this.http.get<any>(`${this.apiURL}product/${productId}`);
     }
 
     SaveProduct(payload: any): Observable<any> {
-        return this.http.post<any>(`${this.apiURL}product`, payload)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            )
+        return this.http.post<any>(`${this.apiURL}product`, payload);
     }
 
     SaveCustomer(payload: any): Observable<any> {
         return this.http.post<any>(`users`, payload);
     }
 
-    GetCustomer(): Observable<any> {
-        return this.http.get('users');
+    GetCustomer(filters?: any): Observable<any> {
+        let params = this.paramsBuilder(filters)
+        return this.http.get('users', { params: params });
     }
 
     GetCustomerbyId(customerId: any): Observable<any> {
         return this.http.get<any>(`users/${customerId}`)
-
     }
 
-    LogIn(credentials: any): Observable<any> {
-        return this.http.post<any>(`${this.apiURL}auth/login`, credentials)
-            .pipe(retry(1),
-                catchError(this.handleError)
-            )
+    DeleteCustomer(customerId: any): Observable<any> {
+        return this.http.delete(`users/${customerId}`)
     }
 
-    // Error handling 
-    handleError(error) {
-        // let errorMessage = '';
-        // if (error.error instanceof ErrorEvent) {
-        //     // Get client-side error
-        //     errorMessage = error.error.errmsg;
-        // } else {
-        //     // Get server-side error
-        //     console.log(error);
-        //     errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.errors.message}`;
-        // }
-        // this.toast.error('hello');
-        // return throwError(errorMessage);
-        return 'Error'
+    paramsBuilder(filter: any) {
+        let params = new HttpParams();
+
+        if (filter) {
+
+            if (filter.pagination) {
+                params = params.append('page', filter.pagination.pageNum);
+                params = params.append('limit', filter.pagination.pageSize);
+            }
+            if (filter.sortBy) {
+                params = params.append('sortBy', filter.sortBy)
+            }
+            if (filter.name) {
+                params = params.append('name', filter.name);
+            }
+            if (filter.role) {
+                params = params.append('role', filter.role);
+            }
+
+            if (filter.searchText && filter.searchText != '') {
+                params = params.append(filter.searchBy, filter.searchText);
+            }
+            return params
+        }
     }
 }

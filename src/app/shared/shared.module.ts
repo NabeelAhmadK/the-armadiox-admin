@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ValidationModule } from "./validation";
 import { TranslateModule } from '@ngx-translate/core';
+import { CKEditorModule } from 'ngx-ckeditor';
 // Components
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { FeatherIconsComponent } from './components/feather-icons/feather-icons.component';
@@ -16,6 +17,7 @@ import { FullComponent } from './components/layout/full/full.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TapToTopComponent } from './components/tap-to-top/tap-to-top.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 // Header Elements Components
 import { SearchComponent } from './components/header/elements/search/search.component';
 import { MegaMenuComponent } from './components/header/elements/mega-menu/mega-menu.component';
@@ -60,7 +62,8 @@ import { APIService } from './services/api.service'
     BookmarkComponent,
     CartComponent,
     MessageBoxComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -70,7 +73,8 @@ import { APIService } from './services/api.service'
     ValidationModule,
     NgSelectModule,
     NgbModule,
-    TranslateModule
+    TranslateModule,
+    CKEditorModule
   ],
   providers: [
     NavService,
@@ -92,7 +96,9 @@ import { APIService } from './services/api.service'
     TextTrimDirective,
     NgSelectModule,
     OnlyAlphabetsDirective,
-    OnlyNumbersDirective
+    OnlyNumbersDirective,
+    PaginationComponent,
+    CKEditorModule
   ],
 })
 export class SharedModule { }

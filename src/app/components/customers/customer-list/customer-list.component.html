@@ -20,7 +20,8 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
-          <app-customer-advance-search></app-customer-advance-search>
+          <app-customer-advance-search [filter]="customerListFilter" (clear)="ResetFilter()" (search)="Filter()">
+          </app-customer-advance-search>
           <div class="tab-content" id="top-tabContent">
             <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
               <div class="table-responsive product-list-custom custom-datatable">
@@ -59,16 +60,19 @@
                         <td>{{customer?.contact_info?.address?.city}}</td>
                         <td>{{customer?.contact_info?.address?.province}}</td>
                         <td class="text-center">
-                          <button class="btn btn-xs btn-link"><i class="fa fa-eye"></i></button>
+                          <button class="btn btn-xs btn-link" (click)="AuthenticateModal(authenticate, customer.id);"><i
+                              class="fa fa-eye"></i></button>
                         </td>
                         <td>
-                          <span appTextTrim characters="8" [ngbTooltip]="customer.email">{{customer.email}}</span>
+                          <span appTextTrim characters="8" [ngbTooltip]="customer.email" [ngbPopover]="popContent"
+                            [popoverTitle]="popTitle">{{customer.email}}</span>
                         </td>
                         <td class="text-center">
                           <a class="btn btn-dark btn-xs"
                             [routerLink]="['/pages/customer-management/customer', customer.id]"><i
                               class="fa fa-pencil"></i></a>
-                          <button class="btn btn-danger btn-xs ml-1"><i class="fa fa-trash"></i></button>
+                          <button class="btn btn-danger btn-xs ml-1" (click)="Delete(customer.id)"><i
+                              class="fa fa-trash"></i></button>
                         </td>
                       </tr>
                     </tbody>
@@ -78,7 +82,78 @@
             </div>
           </div>
         </div>
+        <div class="card-footer text-right p-2">
+          <app-pagination [dataSize]="totalResults" (pageChanged)="PageChanged($event);"></app-pagination>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #authenticate let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Please Authenticate</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group" [formGroup]="authenticationForm">
+      <label for="password">Password</label>
+      <input class="form-control btn-square" id="password" formControlName="password" type="password"
+        placeholder="Enter your password">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="AuthenticateAdmin();">Submit</button>
+  </div>
+</ng-template>
+
+<ng-template #customerPhone let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Phone Number of {{customer}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input class="form-control btn-square" id="phoneNumber" type="text" [(ngModel)]="customerPhoneNumber" disabled>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #email let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Email</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="emailForm">
+      <div class="form-group">
+        <label for="phoneNumber">To</label>
+        <input class="form-control btn-square" id="phoneNumber" type="text" formControlName="to">
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Subject</label>
+        <input class="form-control btn-square" id="phoneNumber" type="text" formControlName="subject">
+      </div>
+      <div class="form-group mb-0">
+        <label class="text-muted">Message</label>
+        <ckeditor [editor]="ClassicEditor" formControlName="body"></ckeditor>
+        <!-- <ck-editor name="editor" id="text-box" [(ngModel)]="editorValue" skin="moono-lisa" language="en"></ck-editor> -->
+      </div>
+      <p>{{emailForm.value | json}}</p>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #popTitle>Send <b>Email</b></ng-template>
+<ng-template #popContent>
+  <div class="text-center">
+    <button class="btn btn-info btn-sm" (click)="openEmailModal(email)">Send Email</button>
+  </div>
+</ng-template>

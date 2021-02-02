@@ -1,16 +1,33 @@
-<div class="input-group input-group-sm py-2 px-4 bg-light  text-center">
-  <div ngbDropdown class="input-group-prepend">
-    <button class="btn btn-info dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>Toggle
-      dropdown</button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <button ngbDropdownItem>Action - 1</button>
-      <button ngbDropdownItem>Another Action</button>
-      <button ngbDropdownItem>Something else is here</button>
+<div class="advance-search-wrapper mb-4">
+  <form>
+    <div class="input-group input-group-sm py-2 px-4 bg-light">
+      <div class="input-group-prepend">
+        <button class="btn btn-primary dropdown-toggle text-capitalize" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{ filter.filterBy.title }}
+        </button>
+        <div class="dropdown-menu shadow">
+          <div class="dropdown-header text-center">
+            <strong>Filter By</strong>
+          </div>
+          <ng-template ngFor let-filterby [ngForOf]="filter.filtersBy">
+            <a class="dropdown-item text-capitalize" [class.text-white]="filter.filterBy == filterby"
+              [class.active]="filter.filterBy == filterby" (click)="filter.filterByChange(filterby)">
+              {{ filterby.title }}</a>
+          </ng-template>
+        </div>
+      </div>
+      <input type="text" class="form-control" name="searchText"
+        [attr.placeholder]="'Type ' + filter.filterBy.title + ' to filter...'" [(ngModel)]="filter.searchText"
+        (keyup.enter)="Search()" autofocus="autofocus" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="Clear()">
+          Clear
+        </button>
+        <button class="btn btn-primary" type="button" (click)="Search()">
+          Search
+        </button>
+      </div>
     </div>
-  </div>
-  <input class="form-control" type="text" formControlName="product_name" placeholder="Product Name *">
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button" (click)="Clear()">Clear</button>
-    <button class="btn btn-primary" type="button" (click)="Search()">Search</button>
-  </div>
+  </form>
 </div>

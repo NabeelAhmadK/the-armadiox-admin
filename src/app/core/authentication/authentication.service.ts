@@ -59,6 +59,10 @@ export class AuthenticationService {
     return !!this.credentials;
   }
 
+  authenticateAdmin(credentials: any): Observable<any> {
+    return this.http.post('auth/authenticate', credentials)
+  }
+
   get credentials(): any | null {
     return this._credentials;
   }

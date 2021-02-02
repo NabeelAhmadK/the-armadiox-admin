@@ -80,13 +80,10 @@ export class NavService implements OnDestroy {
 
 	MENUITEMS: Menu[] = [
 		{
-			headTitle1: 'General', headTitle2: 'Dashboard',
+			headTitle1: 'Applications', headTitle2: 'The Armadiox.pk',
 		},
 		{
 			path: '/pages/dashboard', title: ' Dashboard', icon: 'home', type: 'link', bookmark: true
-		},
-		{
-			headTitle1: 'Applications', headTitle2: 'Ready To Use Apps.',
 		},
 		{
 			title: 'Customers', icon: 'users', type: 'sub', active: false, children: [
