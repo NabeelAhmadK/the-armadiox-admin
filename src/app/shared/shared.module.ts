@@ -38,6 +38,7 @@ import { LayoutService } from './services/layout.service';
 import { NavService } from './services/nav.service';
 import { LookupService } from './services/lookup.service'
 import { APIService } from './services/api.service'
+// import { CartService } from './services/cart.service'
 
 @NgModule({
   declarations: [
@@ -80,7 +81,7 @@ import { APIService } from './services/api.service'
     NavService,
     LayoutService,
     LookupService,
-    APIService
+    APIService,
   ],
   exports: [
     NgbModule,

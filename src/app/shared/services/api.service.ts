@@ -29,15 +29,19 @@ export class APIService {
 
     // HttpClient API get() method => Fetch Product list
     GetProducts(): Observable<any> {
-        return this.http.get<any>(this.apiURL + 'product');
+        return this.http.get('product');
     }
 
     GetProductbyId(productId: any): Observable<any> {
-        return this.http.get<any>(`${this.apiURL}product/${productId}`);
+        return this.http.get(`product/${productId}`);
     }
 
     SaveProduct(payload: any): Observable<any> {
-        return this.http.post<any>(`${this.apiURL}product`, payload);
+        return this.http.post(`product`, payload);
+    }
+
+    UpdateProduct(payload: any): Observable<any> {
+        return this.http.patch(`product/${payload.id}`, payload);
     }
 
     SaveCustomer(payload: any): Observable<any> {

@@ -1,1 +1,73 @@
-<p>order-crud works!</p>
+<app-breadcrumb [title]="'Product'" [items]="['Apps', 'Ecommerce']" [active_item]="'Product'"></app-breadcrumb>
+<!-- Container-fluid starts-->
+<div class="container-fluid product-wrapper" [class.sidebaron]="openSidebar">
+  <div class="product-grid">
+    <div class="feature-products">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <form>
+            <div class="form-group m-0">
+              <input class="form-control" type="search" placeholder="Search.." data-original-title="" title=""><i
+                class="fa fa-search"></i>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="product-wrapper-grid" [class.list-view]="listView">
+      <div class="row">
+        <div *ngFor="let product of products" [class]="'col-xl-'+col+' col-sm-'+col" [class.col-xl-12]="listView">
+          <div class="card">
+            <div class="product-box">
+              <!-- <div class="product-img"><img class="img-fluid" src="assets/images/ecommerce/01.jpg" alt="">
+                <div class="product-hover">
+                  <ul>
+                    <li>
+                      <button class="btn" type="button"><i class="icon-shopping-cart"></i></button>
+                    </li>
+                    <li>
+                      <button class="btn" type="button" (click)="QuickView.openModal()"><i
+                          class="icon-eye"></i></button>
+                    </li>
+                    <li>
+                      <button class="btn" type="button"><i class="icofont icofont-law-alt-2"></i></button>
+                    </li>
+                  </ul>
+                </div>
+              </div> -->
+              
+              <div class="product-details">
+                <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                    class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                <h5 appTextTrim characters="15" [ngbTooltip]="product.product_name">{{product.product_name}}</h5>
+                <p appTextTrim characters="25" [ngbTooltip]="product.product_description">
+                  {{product.product_description}}</p>
+                <div class="product-price">Rs.
+                  {{product.product_retail_price - (product.product_retail_price * (product.discount/100))}}
+                  <del *ngIf="product.discount">Rs. {{product.product_retail_price}}</del>
+                </div>
+              </div>
+              <hr>
+              <div class="m-t-15 mb-2">
+                <div class="row">
+                  <div class="col-md-6 text-right">
+                    <button class="btn btn-primary btn-sm" type="button" title=""> <i
+                        class="fa fa-shopping-basket mr-1"></i></button>
+                  </div>
+                  <div class="col-md-6 text-left">
+                    <button class="btn btn-success btn-sm" type="button" (click)="QuickView.openModal(product)"> <i
+                        class="fa fa-shopping-cart mr-1"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<app-quick-view #quickView></app-quick-view>
+<!-- Container-fluid Ends-->

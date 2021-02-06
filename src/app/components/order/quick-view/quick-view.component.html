@@ -1,0 +1,61 @@
+<ng-template #quickView let-modal>
+
+  <div class="ribbon ribbon-danger" *ngIf="product.discount">Sale</div>
+  <div class="modal-content">
+    <div class="modal-header product-modal">
+      <div class="product-box row">
+        <div class="product-img col-md-6"><img class="img-fluid" src="assets/images/ecommerce/01.jpg" alt=""></div>
+        <div class="product-details col-md-6 text-left">
+          <h4>{{product.product_name}}</h4>
+          <div class="product-price">Rs.
+            {{product.product_retail_price - (product.product_retail_price * (product.discount/100))}}
+            <del *ngIf="product.discount">Rs. {{product.product_retail_price}} </del>
+          </div>
+          <div class="product-view">
+            <h6 class="f-w-600">Product Details</h6>
+            <p class="mb-0">{{product.product_description}}</p>
+          </div>
+          <!-- <div class="product-size">
+            <ul>
+              <li>
+                <button class="btn btn-outline-light" type="button">M</button>
+              </li>
+              <li>
+                <button class="btn btn-outline-light" type="button">L</button>
+              </li>
+              <li>
+                <button class="btn btn-outline-light" type="button">Xl</button>
+              </li>
+            </ul>
+          </div> -->
+          <div class="product-qnty">
+            <h6 class="f-w-600 mt-2">Quantity</h6>
+            <div class="qty-box">
+              <div class="input-group">
+                <span class="input-group-prepend">
+                  <button class="btn quantity-left-minus" type="button" data-type="minus" (click)="minusQuantity();"
+                    data-field="">
+                    <app-feather-icons [icon]="'minus'"></app-feather-icons>
+                  </button>
+                </span>
+                <input class="form-control input-number" type="text" name="quantity" [(ngModel)]="quantity">
+                <span class="input-group-prepend">
+                  <button class="btn quantity-right-plus" type="button" data-type="plus" data-field=""
+                    (click)="addQuantity();">
+                    <app-feather-icons [icon]="'plus'"></app-feather-icons>
+                  </button>
+                </span>
+              </div>
+              <span class="text-danger text-bold" *ngIf="maxStockReached">Maximum Stock Reached</span>
+              <span class="text-danger text-bold" >{{message}}</span>
+            </div>
+            <div class="addcart-btn">
+              <button class="btn btn-primary mr-1" type="button" (click)="addToCart()">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="close" (click)="modal.dismiss('Cross click')"><span aria-hidden="true">×</span></button>
+    </div>
+  </div>
+</ng-template>
