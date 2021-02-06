@@ -50,7 +50,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-5">
                 <div class="form-group">
                   <label>Product Cost</label>
                   <input class="form-control" type="text" maxlength="5" placeholder="0" formControlName="product_cost">
@@ -58,11 +58,33 @@
                   </app-validation-popover>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-5">
                 <div class="form-group">
-                  <label>Discount (%)</label>
-                  <input class="form-control" maxlength="3" type="text" placeholder="0" formControlName="discount">
-                  <app-validation-popover [control]="productForm.controls.discount" [show]="submitted">
+                  <label>Product Retail Price ({{(profitMargin > 0 ? profitMargin : 0) | number:'1.0-0'}}% Gross
+                    Margin)</label>
+                  <div class="input-group">
+                    <input class="form-control" type="text" maxlength="5"
+                      [attr.placeholder]="profitMargin+'% Gross Margin'" formControlName="product_retail_price">
+                    <div class="input-group-append">
+                      <button class="btn btn-sm btn-secondary" id="basic-addon2"
+                        *ngIf="productForm.get('product_retail_price').disabled"
+                        (click)="productForm.get('product_retail_price').enable()">Adjust</button>
+                      <button class="btn btn-sm btn-secondary" id="basic-addon2"
+                        *ngIf="productForm.get('product_retail_price').enabled"
+                        (click)="productForm.get('product_retail_price').disable(); calculateRetailPrice();">Set to
+                        35%</button>
+                    </div>
+                  </div>
+                  <app-validation-popover [control]="productForm.controls.product_retail_price" [show]="submitted">
+                  </app-validation-popover>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label>In Stock</label>
+                  <input class="form-control" maxlength="3" type="text" placeholder="0"
+                    formControlName="product_in_stock">
+                  <app-validation-popover [control]="productForm.controls.product_in_stock" [show]="submitted">
                   </app-validation-popover>
                 </div>
               </div>
@@ -78,23 +100,39 @@
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="form-group">
-                  <label>In Stock</label>
-                  <input class="form-control" type="text" maxlength="3" placeholder="0"
-                    formControlName="product_in_stock">
-                  <app-validation-popover [control]="productForm.controls.product_in_stock" [show]="submitted">
-                  </app-validation-popover>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
                 <div class="form-group ">
                   <label>Upload File</label>
                   <input class="form-control" type="file">
                 </div>
               </div>
             </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">Expected Total Cost</th>
+                  <th scope="col" class="text-center">Expected Total Sale</th>
+                  <th scope="col" class="text-center">Expected Total Profit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">
+                    Rs. {{productForm.get('product_cost').value * productForm.get('product_in_stock').value}} ≈
+                    {{((productForm.get('product_cost').value * productForm.get('product_in_stock').value)/usdRate) | currency:'USD'}}
+                  </td>
+                  <td class="text-center">Rs.
+                    {{productForm.get('product_retail_price').value * productForm.get('product_in_stock').value}} ≈
+                    {{((productForm.get('product_retail_price').value * productForm.get('product_in_stock').value)/usdRate) | currency:'USD'}}
+                  </td>
+                  <td class="text-center">Rs.
+                    {{(productForm.get('product_retail_price').value - productForm.get('product_cost').value) * productForm.get('product_in_stock').value}}
+                    ≈
+                    {{(((productForm.get('product_retail_price').value - productForm.get('product_cost').value) * productForm.get('product_in_stock').value)/usdRate) | currency:'USD'}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

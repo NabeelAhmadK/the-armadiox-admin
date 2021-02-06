@@ -1,3 +1,8 @@
 input {
-    color: #495057 !important;
+  color: #495057 !important;
+}
+
+.form-control:disabled {
+  background-color: #e9ecef !important;
+  opacity: 1;
 }

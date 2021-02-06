@@ -9,7 +9,7 @@
           </div>
           <div class="col-sm-4">
             <div class="text-right">
-              <a class="btn btn-primary" [routerLink]="['/product-management/product']"> <i data-feather="plus-square">
+              <a class="btn btn-primary" [routerLink]="['/pages/product-management/product']"> <i data-feather="plus-square">
                 </i>Add Product</a>
               <button class="btn btn-light" (click)="GetProducts();"><i class="fa fa-refresh"></i></button>
             </div>
@@ -20,7 +20,7 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
-          <app-product-advance-search></app-product-advance-search>
+          <!-- <app-product-advance-search></app-product-advance-search> -->
           <div class="tab-content" id="top-tabContent">
             <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
               <div class="table-responsive product-list-custom custom-datatable">
@@ -31,11 +31,12 @@
                         <th scope="col">Product ID</th>
                         <th scope="col">Product</th>
                         <th scope="col" class="text-center">Cost</th>
+                        <th scope="col" class="text-center">Revenue</th>
+                        <th scope="col" class="text-center">Profit</th>
                         <th scope="col" class="text-center">Stock</th>
                         <th scope="col" class="text-center">Orders</th>
                         <th scope="col">Variations</th>
                         <th scope="col" class="text-center">Type</th>
-                        <th scope="col">Create Date</th>
                         <th scope="col" class="text-center">Action</th>
                       </tr>
                     </thead>
@@ -44,6 +45,8 @@
                         <td>{{product.product_sku_id}}</td>
                         <td>{{product.product_name}}</td>
                         <td class="text-center">Rs. {{product.product_cost}}</td>
+                        <td class="text-center">Rs. {{product.product_retail_price}}</td>
+                        <td class="text-center">Rs. {{product.product_retail_price - product.product_cost}}</td>
                         <td class="text-center">
                           <span [ngbTooltip]="product.product_in_stock"
                             [ngClass]="{'text-danger': product.product_in_stock == 0, 'text-primary': product.product_in_stock <= 5, 'text-success': product.product_in_stock > 5}">{{product.product_in_stock == 0 ? 'Out of Stock' : product.product_in_stock > 5 ? 'In Stock' : 'Low Stock'}}</span>
@@ -56,10 +59,9 @@
                         <td class="text-center">
                           {{product.product_type_id == 1 ? 'Male' : product.product_type_id == 2 ? 'Female' : product.product_type_id == 3 ? 'Uni-Sex' : '-'}}
                         </td>
-                        <td>{{product.create_date | date:'mediumDate'}}</td>
                         <td class="text-center">
                           <a class="btn btn-dark btn-xs"
-                            [routerLink]="['/product-management/product', product.product_id]"><i
+                            [routerLink]="['/pages/product-management/product', product.id]"><i
                               class="fa fa-pencil"></i></a>
                           <button class="btn btn-danger btn-xs ml-1"><i class="fa fa-trash"></i></button>
                         </td>
