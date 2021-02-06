@@ -10,10 +10,13 @@ const MODULES = [
 ]
 
 import { LoginComponent } from './login/login.component'
-
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const PAGES = [
-  LoginComponent
+  LoginComponent,
+  ForgotPasswordComponent,
+  ResetPasswordComponent
 ]
 
 @NgModule({

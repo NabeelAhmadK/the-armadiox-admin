@@ -42,7 +42,7 @@
                   <input id="checkbox1" type="checkbox">
                   <label class="text-muted" for="checkbox1">Remember password</label>
                 </div>
-                <a [routerLink]="'/authentication/forgot-password'" class="link">Forgot password?</a>
+                <a [routerLink]="'/auth/forgot-password'" class="link">Forgot password?</a>
                 <button class="btn btn-primary btn-block" [class.loader--text]="showLoader"
                   [disabled]="!loginForm.valid || showLoader" (click)="Login()"
                   type="button"><span>{{ showLoader ? '' : 'Login' }}</span>
